@@ -66,6 +66,8 @@ def print_refresh_commands(node_path):
     print("\n⚡ To use Node.js **right now** in this shell, run:\n")
     print(" PowerShell:")
     print(f'$env:Path = "{node_path};" + $env:Path\n')
+    print(" Also run:")
+    print("Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass"
     print(" CMD:")
     print(f'set PATH={node_path};%PATH%\n')
     print("Then test by running:\n   node -v\n   npm -v\n   npx --version\n")
