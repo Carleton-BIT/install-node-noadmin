@@ -8,4 +8,4 @@ On powershell, run
 
 `(iwr -useb "https://raw.githubusercontent.com/Carleton-BIT/install-node-noadmin/refs/heads/main/install.py").Content | python -`
 
-It's quite dangerous to run random scripts you find on the internet.
+FYI: It's quite dangerous to run random scripts you find on the internet. You can trust me, but don't make this a regular thing.
