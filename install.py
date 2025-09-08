@@ -16,12 +16,18 @@ def get_latest_win_x64_url():
     print("🌐 Fetching Node.js latest directory listing...")
     with urllib.request.urlopen(BASE_URL) as resp:
         html = resp.read().decode('utf-8')
-    # Regex to find 'node‑v...‑win‑x64.zip'
-    m = re.search(r'href="(node-v[^"]+-win-x64\.zip)"', html)
-    if not m:
+
+    # Match any line containing the zip file for Windows x64
+    # It looks like: node-v24.7.0-win-x64.zip
+    matches = re.findall(r'(node-v[\d\.]+-win-x64\.zip)', html)
+    if not matches:
         print("❌ Couldn't find the Windows x64 zip in the latest directory.")
-        sys.exit(1)
-    return BASE_URL + m.group(1), m.group(1)
+        exit(1)
+
+    # The first match is the latest version
+    filename = matches[0]
+    full_url = BASE_URL + filename
+    return full_url, filename
 
 def download_node(zip_url):
     print(f"📥 Downloading {zip_url}...")
